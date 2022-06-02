@@ -29,6 +29,10 @@ view: orders {
     ]
     sql: ${TABLE}.created_at ;;
   }
+  dimension: date_of_birth_dash {
+    sql: ${created_date} ;;
+    html: {{rendered_value | date: "%m/%d/%Y"}} ;;
+  }
 
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
