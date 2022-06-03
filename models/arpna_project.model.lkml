@@ -140,6 +140,20 @@ explore: inventory_items {
 }
 
 explore: orders {
+
+
+    aggregate_table: rollup__created_month {
+      query: {
+        dimensions: [id,created_month,status]
+        measures: [count]
+        timezone: "America/Los_Angeles"
+      }
+
+      materialization: {
+        datagroup_trigger: arpna_project_default_datagroup
+      }
+    }
+
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
