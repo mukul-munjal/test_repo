@@ -32,7 +32,7 @@ explore: imgsrc1onerroralert2 {}
 explore: account {
   aggregate_table: rollup__id {
     query: {
-      dimensions: [id]
+      dimensions: [id,age,name]
       measures: [count, total_age]
       timezone: "America/Los_Angeles"
     }
