@@ -8,7 +8,7 @@ include: "/views/**/*.view"
 # use the Quick Help panel on the right to see documentation.
 
 datagroup: arpna_project_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 
@@ -29,9 +29,29 @@ persist_with: arpna_project_default_datagroup
 
 explore: imgsrc1onerroralert2 {}
 
-explore: account {}
+explore: account {
+  aggregate_table: rollup__id {
+    query: {
+      dimensions: [id]
+      measures: [count, total_age]
+      timezone: "America/Los_Angeles"
+    }
+
+    materialization: {
+      datagroup_trigger: arpna_project_default_datagroup
+    }
+  }
+
+}
 
 explore: billion_orders {
+
+
+
+
+
+
+
   join: orders {
     type: left_outer
     sql_on: ${billion_orders.order_id} = ${orders.id} ;;
