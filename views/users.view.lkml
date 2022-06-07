@@ -33,7 +33,7 @@ view: users {
 
   measure: average_age {
     type: average
-    value_format_name: decimal_1
+    value_format_name: decimal_2
     sql: ${age} ;;
   }
 
